@@ -4,6 +4,7 @@
 #display-screen {
   background-color: black;
   color: green;
+  text-align: center;
 }
 #keypad {
   background-color: slategray;
