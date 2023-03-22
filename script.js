@@ -16,4 +16,20 @@ document.addEventListener("DOMContentLoaded", function () {
       displayScreen.textContent += button.textContent;
     });
   });
+  //Functions for the maths operators(rough)
+  const add = function (a, b) {
+    return a + b;
+  };
+
+  const subtract = function (c, d) {
+    return c - d;
+  };
+
+  const multiply = function (c, d) {
+    return c * d;
+  };
+
+  const divide = function (c, d) {
+    return c / d;
+  };
 });
