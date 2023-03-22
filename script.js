@@ -1,10 +1,13 @@
+// Wrapped my Javascript to only execute after HTML is fully loaded.
 document.addEventListener("DOMContentLoaded", function () {
+  //Create the number pad for calculator(not operator buttons)
   let buttonContainer = document.getElementById("keypad");
   for (let i = 1; i <= 9; i++) {
     let button = document.createElement("button");
     button.textContent = i;
     buttonContainer.appendChild(button);
   }
+  // Using display screen to display the numbers selected.
   let displayScreen = document.getElementById("display-screen");
   let buttons = document.querySelectorAll("#keypad button");
 
