@@ -5,4 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     button.textContent = i;
     buttonContainer.appendChild(button);
   }
+  let displayScreen = document.getElementById("display-screen");
+  let buttons = document.querySelectorAll("#keypad button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      displayScreen.textContent += button.textContent;
+    });
+  });
 });
