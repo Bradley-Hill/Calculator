@@ -1,0 +1,15 @@
+#container {
+  background-color: darkslategrey;
+}
+#display-screen {
+  background-color: black;
+  color: green;
+}
+#keypad {
+  background-color: slategray;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+  padding: 5px;
+}
