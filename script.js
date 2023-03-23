@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
   for (let i = 1; i <= 9; i++) {
     let button = document.createElement("button");
     button.textContent = i;
+    button.classList.add("number");
     buttonContainer.appendChild(button);
   }
   // Using display screen to display the numbers selected.
   let displayScreen = document.getElementById("display-screen");
-  let buttons = document.querySelectorAll("button");
+  let buttons = document.querySelectorAll(
+    "#numberpad button,.number, .operator"
+  );
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
