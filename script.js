@@ -9,11 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // Using display screen to display the numbers selected.
   let displayScreen = document.getElementById("display-screen");
-  let buttons = document.querySelectorAll("#numberpad button");
+  let buttons = document.querySelectorAll("button");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      displayScreen.textContent += button.textContent;
+      if (button.classList.contains("operator")) {
+        displayScreen.textContent += " " + button.textContent + " ";
+      } else {
+        displayScreen.textContent += button.textContent;
+      }
     });
   });
   //Functions for the maths operators(rough)
