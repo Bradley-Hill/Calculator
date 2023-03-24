@@ -77,6 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  //Added Clear button
+  let clearButton = document.getElementById("clear");
+  clearButton.addEventListener("click", () => {
+    numberOne = null;
+    numberTwo = null;
+    operatorChoice = null;
+    displayScreen.textContent = "";
+  });
   //Operate Function to be called when resultCall is clicked.
   function operate(num1, num2, operator) {
     switch (operator) {
