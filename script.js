@@ -23,24 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
     //Verify both numbers and the operator have been stored.
     if (numberOne !== null && numberTwo !== null && operatorChoice !== null) {
       // Perform appropriate calculation based upon operatorChoice
-      switch (operatorChoice) {
-        case "+":
-          displayScreen.textContent =
-            parseFloat(numberOne) + parseFloat(numberTwo);
-          break;
-        case "-":
-          displayScreen.textContent =
-            parseFloat(numberOne) - parseFloat(numberTwo);
-          break;
-        case "*":
-          displayScreen.textContent =
-            parseFloat(numberOne) * parseFloat(numberTwo);
-          break;
-        case "/":
-          displayScreen.textContent =
-            parseFloat(numberOne) / parseFloat(numberTwo);
-          break;
-      }
+      displayScreen.textContent = operate(
+        parseFloat(numberOne),
+        parseFloat(numberTwo),
+        operatorChoice
+      );
       numberOne = null;
       numberTwo = null;
       operatorChoice = null;
@@ -74,24 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else if (button.id === "resultCall") {
         if (numberTwo !== null) {
-          switch (operatorChoice) {
-            case "+":
-              displayScreen.textContent =
-                parseFloat(numberOne) + parseFloat(numberTwo);
-              break;
-            case "-":
-              displayScreen.textContent =
-                parseFloat(numberOne) - parseFloat(numberTwo);
-              break;
-            case "*":
-              displayScreen.textContent =
-                parseFloat(numberOne) * parseFloat(numberTwo);
-              break;
-            case "/":
-              displayScreen.textContent =
-                parseFloat(numberOne) / parseFloat(numberTwo);
-              break;
-          }
+          displayScreen.textContent = operate(
+            parseFloat(numberOne),
+            parseFloat(numberTwo),
+            operatorChoice
+          );
           numberOne = displayScreen.textContent;
           numberTwo = null;
           operatorChoice = null;
@@ -102,4 +76,35 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  //Operate Function to be called when resultCall is clicked.
+  function operate(num1, num2, operator) {
+    switch (operator) {
+      case "+":
+        return add(num1, num2);
+      case "-":
+        return subtract(num1, num2);
+      case "*":
+        return multiply(num1, num2);
+      case "/":
+        return divide(num1, num2);
+    }
+  }
+
+  // Specific functions for each operation.
+  function add(a, b) {
+    return a + b;
+  }
+
+  function subtract(a, b) {
+    return a - b;
+  }
+
+  function multiply(a, b) {
+    return a * b;
+  }
+
+  function divide(a, b) {
+    return a / b;
+  }
 });
