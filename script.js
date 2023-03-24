@@ -8,35 +8,115 @@ document.addEventListener("DOMContentLoaded", function () {
     button.classList.add("number");
     buttonContainer.appendChild(button);
   }
-  // Using display screen to display the numbers selected.
+
+  // Create references to the display screen and result button.
   let displayScreen = document.getElementById("display-screen");
+  let resultButton = document.getElementById("resultCall");
+
+  //Initialise variables to hold the first number, operator and the second number.
+  let numberOne = null;
+  let numberTwo = null;
+  let operatorChoice = null;
+
+  // Add event listener to the resultCall Button.
+  resultButton.addEventListener("click", () => {
+    //Verify both numbers and the operator have been stored.
+    if (numberOne !== null && numberTwo !== null && operatorChoice !== null) {
+      // Perform appropriate calculation based upon operatorChoice
+      switch (operatorChoice) {
+        case "+":
+          displayScreen.textContent =
+            parseFloat(numberOne) + parseFloat(numberTwo);
+          break;
+        case "-":
+          displayScreen.textContent =
+            parseFloat(numberOne) - parseFloat(numberTwo);
+          break;
+        case "*":
+          displayScreen.textContent =
+            parseFloat(numberOne) * parseFloat(numberTwo);
+          break;
+        case "/":
+          displayScreen.textContent =
+            parseFloat(numberOne) / parseFloat(numberTwo);
+          break;
+      }
+      numberOne = null;
+      numberTwo = null;
+      operatorChoice = null;
+    }
+  });
+
+  // Event listener for buttons
   let buttons = document.querySelectorAll(
     "#numberpad button,.number, .operator"
   );
-
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (button.classList.contains("operator")) {
-        displayScreen.textContent += " " + button.textContent + " ";
+      //verify if button is a number
+      if (!isNaN(button.textContent)) {
+        if (operatorChoice === null) {
+          if (numberOne === null) {
+            numberOne = button.textContent;
+            displayScreen.textContent = button.textContent;
+          } else {
+            numberOne += button.textContent;
+            displayScreen.textContent += button.textContent;
+          }
+        } else {
+          if (numberTwo === null) {
+            numberTwo = button.textContent;
+            displayScreen.textContent += button.textContent;
+          } else {
+            numberTwo += button.textContent;
+            displayScreen.textContent += button.textContent;
+          }
+        }
+      } else if (button.id === "resultCall") {
+        if (numberTwo !== null) {
+          switch (operatorChoice) {
+            case "+":
+              displayScreen.textContent =
+                parseFloat(numberOne) + parseFloat(numberTwo);
+              break;
+            case "-":
+              displayScreen.textContent =
+                parseFloat(numberOne) - parseFloat(numberTwo);
+              break;
+            case "*":
+              displayScreen.textContent =
+                parseFloat(numberOne) * parseFloat(numberTwo);
+              break;
+            case "/":
+              displayScreen.textContent =
+                parseFloat(numberOne) / parseFloat(numberTwo);
+              break;
+          }
+          numberOne = displayScreen.textContent;
+          numberTwo = null;
+          operatorChoice = null;
+        }
       } else {
-        displayScreen.textContent += button.textContent;
+        operatorChoice = button.textContent;
+        displayScreen.textContent += " " + button.textContent + " ";
       }
     });
   });
-  //Functions for the maths operators(rough)
-  const add = function (a, b) {
-    return a + b;
-  };
-
-  const subtract = function (c, d) {
-    return c - d;
-  };
-
-  const multiply = function (c, d) {
-    return c * d;
-  };
-
-  const divide = function (c, d) {
-    return c / d;
-  };
 });
+
+//Functions for the maths operators(rough)
+const add = function (a, b) {
+  return a + b;
+};
+
+const subtract = function (c, d) {
+  return c - d;
+};
+
+const multiply = function (c, d) {
+  return c * d;
+};
+
+const divide = function (c, d) {
+  return c / d;
+};
