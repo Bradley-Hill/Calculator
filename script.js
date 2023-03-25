@@ -55,8 +55,15 @@ document.addEventListener("DOMContentLoaded", function () {
             numberTwo = button.textContent;
             displayScreen.textContent += button.textContent;
           } else {
-            numberTwo += button.textContent;
-            displayScreen.textContent += button.textContent;
+            numberOne = operate(
+              parseFloat(numberOne),
+              parseFloat(numberTwo),
+              operatorChoice
+            );
+            displayScreen.textContent = numberOne;
+            numberTwo = null;
+            operatorChoice = button.textContent;
+            displayScreen.textContent += " " + button.textContent + " ";
           }
         }
       } else if (button.id === "resultCall") {
