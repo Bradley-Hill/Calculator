@@ -55,15 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
             numberTwo = button.textContent;
             displayScreen.textContent += button.textContent;
           } else {
-            numberOne = operate(
-              parseFloat(numberOne),
-              parseFloat(numberTwo),
-              operatorChoice
-            );
-            displayScreen.textContent = numberOne;
-            numberTwo = null;
-            operatorChoice = button.textContent;
-            displayScreen.textContent += " " + button.textContent + " ";
+            numberTwo += button.textContent;
+            displayScreen.textContent += button.textContent;
           }
         }
       } else if (button.id === "resultCall") {
