@@ -1,6 +1,15 @@
 // Wrapped my Javascript to only execute after HTML is fully loaded.
 document.addEventListener("DOMContentLoaded", function () {
-  //Operate Function to be called when resultCall is clicked.
+  //Create references to display and result button
+  let displayScreen = document.getElementById("display-screen");
+  let resultCall = document.getElementById("result");
+
+  //Init variables for computation
+  let numberOne = null;
+  let numberTwo = null;
+  let operatorChoice = null;
+
+  //Operate Function to be called when result is clicked.
   function operate(num1, num2, operator) {
     switch (operator) {
       case "+":
