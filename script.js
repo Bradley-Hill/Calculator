@@ -1,11 +1,10 @@
 // Wrapped my Javascript to only execute after HTML is fully loaded.
 document.addEventListener("DOMContentLoaded", function () {
   //Create the number pad for calculator(not operator buttons)
-  let buttonContainer = document.getElementById("numberpad");
-  for (let i = 1; i <= 9; i++) {
+  let buttonContainer = document.getElementById("button-grid");
+  for (let i = 1; i <= 19; i++) {
     let button = document.createElement("button");
     button.textContent = i;
-    button.classList.add("number");
     buttonContainer.appendChild(button);
   }
 
