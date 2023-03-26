@@ -5,7 +5,7 @@
   background-color: black;
   color: green;
   text-align: end;
-  height: 
+
   font-size: 36px;
   align-items: center;
 }
@@ -14,7 +14,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   padding: 5px;
-
 }
 button {
   font-size: 20px;
