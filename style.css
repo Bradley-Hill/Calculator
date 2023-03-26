@@ -9,6 +9,12 @@
   font-size: 36px;
   align-items: center;
 }
+#button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  padding: 5px;
+}
 button {
   font-size: 20px;
   padding: 10px;
@@ -20,4 +26,6 @@ button {
 
 button:hover {
   background-color: #d2d2d2;
+  border-radius: 10px;
+  box-shadow: 2px;
 }
