@@ -29,3 +29,8 @@ button:hover {
   border-radius: 10px;
   box-shadow: 2px;
 }
+#result {
+  background-color: green;
+  border: 1px solid darkgray;
+  grid-column: span 2;
+}
