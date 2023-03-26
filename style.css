@@ -5,6 +5,7 @@
   background-color: black;
   color: green;
   text-align: end;
+  height: 50px;
 
   font-size: 36px;
   align-items: center;
@@ -33,4 +34,15 @@ button:hover {
   background-color: green;
   border: 1px solid darkgray;
   grid-column: span 2;
+}
+.operator {
+  background-color: darkred;
+  color: white;
+  font-weight: bold;
+}
+#clearAll {
+  background-color: yellow;
+}
+#delete {
+  background-color: yellow;
 }
