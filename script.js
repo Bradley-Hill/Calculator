@@ -51,6 +51,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  //Result button event listener
+  resultCall.addEventListener("click", function () {
+    if (numberOne !== null && numberTwo !== null && operatorChoice !== null) {
+      const result = operate(
+        parseFloat(numberOne),
+        parseFloat(numberTwo),
+        operatorChoice
+      );
+      displayScreen.textContent = result.toString();
+      numberOne = null;
+      numberTwo = null;
+      operatorChoice = null;
+    }
+  });
+
   //Operator button event listener
   operatorButtons.forEach(function (button) {
     button.addEventListener("click", function () {
