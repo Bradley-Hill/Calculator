@@ -32,9 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else {
         if (operatorChoice === null) {
+          if (decimalOne) {
+            numberOne += ".";
+            decimalOne = false;
+          }
           numberOne += button.textContent;
           displayScreen.textContent += button.textContent;
         } else {
+          if (decimalTwo) {
+            numberTwo += ".";
+            decimalTwo = false;
+          }
           numberTwo += button.textContent;
           displayScreen.textContent += button.textContent;
         }
@@ -53,38 +61,38 @@ document.addEventListener("DOMContentLoaded", function () {
     if (decimalTwo && numberTwo === "") {
       numberTwo = "0";
     }
+
     const result = operate(
       parseFloat(numberOne),
       parseFloat(numberTwo),
       operatorChoice
     );
-    displayScreen.textContent = result.toString();
+    displayScreen.textContent = result.toFixed(7);
     numberOne = "";
     numberTwo = "";
     operatorChoice = null;
     decimalOne = false;
     decimalTwo = false;
   });
-});
 
-//Operator button event listener
-operatorButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    operatorChoice = button.textContent;
-    displayScreen.textContent += " " + operatorChoice + " ";
+  //Operator button event listener
+  operatorButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      operatorChoice = button.textContent;
+      displayScreen.textContent += " " + operatorChoice + " ";
+    });
+  });
+
+  //Clear button event listener
+  clearButton.addEventListener("click", function () {
+    numberOne = "";
+    numberTwo = "";
+    operatorChoice = null;
+    decimalOne = false;
+    decimalTwo = false;
+    displayScreen.textContent = "";
   });
 });
-
-//Clear button event listener
-clearButton.addEventListener("click", function () {
-  numberOne = "";
-  numberTwo = "";
-  operatorChoice = null;
-  decimalOne = false;
-  decimalTwo = false;
-  displayScreen.textContent = "";
-});
-
 //Operate Function to be called when result is clicked.
 function operate(num1, num2, operator) {
   switch (operator) {
@@ -101,17 +109,17 @@ function operate(num1, num2, operator) {
 
 // Specific functions for each operation.
 function add(a, b) {
-  return a + b;
+  return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
-  return a - b;
+  return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-  return a * b;
+  return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-  return a / b;
+  return Number(a) / Number(b);
 }
