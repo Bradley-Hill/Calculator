@@ -25,8 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (operatorChoice === null) {
           decimalOne = true;
+          displayScreen.textContent += ".";
         } else {
           decimalTwo = true;
+          displayScreen.textContent += ".";
         }
       } else {
         if (operatorChoice === null) {
@@ -51,66 +53,65 @@ document.addEventListener("DOMContentLoaded", function () {
     if (decimalTwo && numberTwo === "") {
       numberTwo = "0";
     }
-      const result = operate(
-        parseFloat(numberOne),
-        parseFloat(numberTwo),
-        operatorChoice
-      );
-      displayScreen.textContent = result.toString();
-      numberOne = "";
-      numberTwo = "";
-      operatorChoice = null;
-      decimalOne = false;
-      decimalTwo = false;
-    }
-  });
-
-  //Operator button event listener
-  operatorButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      operatorChoice = button.textContent;
-      displayScreen.textContent += " " + operatorChoice + " ";
-    });
-  });
-
-  //Clear button event listener
-  clearButton.addEventListener("click", function () {
-    numberOne = null;
-    numberTwo = null;
+    const result = operate(
+      parseFloat(numberOne),
+      parseFloat(numberTwo),
+      operatorChoice
+    );
+    displayScreen.textContent = result.toString();
+    numberOne = "";
+    numberTwo = "";
     operatorChoice = null;
     decimalOne = false;
     decimalTwo = false;
-    displayScreen.textContent = "";
   });
-
-  //Operate Function to be called when result is clicked.
-  function operate(num1, num2, operator) {
-    switch (operator) {
-      case "+":
-        return add(num1, num2);
-      case "-":
-        return subtract(num1, num2);
-      case "*":
-        return multiply(num1, num2);
-      case "/":
-        return divide(num1, num2);
-    }
-  }
-
-  // Specific functions for each operation.
-  function add(a, b) {
-    return a + b;
-  }
-
-  function subtract(a, b) {
-    return a - b;
-  }
-
-  function multiply(a, b) {
-    return a * b;
-  }
-
-  function divide(a, b) {
-    return a / b;
-  }
 });
+
+//Operator button event listener
+operatorButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    operatorChoice = button.textContent;
+    displayScreen.textContent += " " + operatorChoice + " ";
+  });
+});
+
+//Clear button event listener
+clearButton.addEventListener("click", function () {
+  numberOne = "";
+  numberTwo = "";
+  operatorChoice = null;
+  decimalOne = false;
+  decimalTwo = false;
+  displayScreen.textContent = "";
+});
+
+//Operate Function to be called when result is clicked.
+function operate(num1, num2, operator) {
+  switch (operator) {
+    case "+":
+      return add(num1, num2);
+    case "-":
+      return subtract(num1, num2);
+    case "*":
+      return multiply(num1, num2);
+    case "/":
+      return divide(num1, num2);
+  }
+}
+
+// Specific functions for each operation.
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
+}
