@@ -15,11 +15,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
   numberButtons.forEach(function (button) {
     button.addEventListener("click", function () {
+      if (
+        button.textContent === "." &&
+        ((operatorChoice == null && decimalOne) ||
+          (operatorChoice !== null && decimalTwo))
+      ) {
+        return;
+      }
       if (numberOne === null) {
+        if (button.textContent === ".") {
+          decimalOne = true;
+        }
         numberOne = button.textContent;
         displayScreen.textContent += button.textContent;
-      } else {
+      } else if (operatorChoice === null) {
+        if (button.textContent === "." && decimalOne) {
+          return;
+        }
+        if (button.textContent === ".") {
+          decimalOne = true;
+        }
         numberOne += button.textContent;
+        displayScreen.textContent += button.textContent;
+      } else {
+        if (button.textContent === "." && decimalTwo) {
+          return;
+        }
+        if (button.textContent === ".") {
+          decimalTwo = true;
+        }
+        numberTwo += button.textContent;
         displayScreen.textContent += button.textContent;
       }
     });
