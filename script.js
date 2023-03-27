@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   operatorButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       operatorChoice = button.textContent;
-      displayScreen.textContent += operatorChoice;
+      displayScreen.textContent += " " + operatorChoice + " ";
     });
   });
 
