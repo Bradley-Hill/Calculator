@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       displayScreen.textContent = resultString;
       flag = true;
+      numberOne = resultString;
+      numberTwo = "";
+      operatorChoice = null;
+      decimalOne = resultString.includes(".") ? true : false;
+      decimalTwo = false;
     }
-    numberOne = "";
-    numberTwo = "";
-    operatorChoice = null;
-    decimalOne = false;
-    decimalTwo = false;
   });
 
   //Operator button event listener
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         flag = false;
       }
       if (operatorChoice === null) {
-        operatorChoicebutton.textContent;
+        operatorChoice = button.textContent;
         displayScreen.textContent += " " + operatorChoice + " ";
       }
     });
