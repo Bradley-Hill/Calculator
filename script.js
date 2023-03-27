@@ -13,9 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let operatorChoice = null;
   let decimalOne = false;
   let decimalTwo = false;
+  let flag = false;
 
   numberButtons.forEach(function (button) {
     button.addEventListener("click", function () {
+      if (flag) {
+        numberOne = displayScreen.textContent;
+        numberTwo = "";
+        decimalOne = numberOne.includes(".") ? true : false;
+        decimalTwo = false;
+        displayScreen.textContent = numberOne;
+        flag = false;
+      }
       if (button.textContent === ".") {
         if (
           (operatorChoice === null && decimalOne) ||
@@ -76,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         resultString = resultString.replace(/\.?0*$/, "");
       }
       displayScreen.textContent = resultString;
+      flag = true;
     }
     numberOne = "";
     numberTwo = "";
@@ -87,8 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
   //Operator button event listener
   operatorButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-      operatorChoice = button.textContent;
-      displayScreen.textContent += " " + operatorChoice + " ";
+      if (flag) {
+        operatorChoice = null;
+        flag = false;
+      }
+      if (operatorChoice === null) {
+        operatorChoicebutton.textContent;
+        displayScreen.textContent += " " + operatorChoice + " ";
+      }
     });
   });
 
@@ -100,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     decimalOne = false;
     decimalTwo = false;
     displayScreen.textContent = "";
+    flag = false;
   });
 });
 //Operate Function to be called when result is clicked.
