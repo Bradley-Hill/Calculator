@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
       parseFloat(numberTwo),
       operatorChoice
     );
-
     if (isNaN(result)) {
       displayScreen.textContent = "Nope, it can't be done.";
     } else {
@@ -101,10 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
         operatorChoice = null;
         flag = false;
       }
-      if (operatorChoice === null) {
-        operatorChoice = button.textContent;
-        displayScreen.textContent += " " + operatorChoice + " ";
+      if (operatorChoice !== null && numberTwo !== "") {
+        const result = operate(
+          parseFloat(numberOne),
+          parseFloat(numberTwo),
+          operatorChoice
+        );
+        numberOne = result.toString();
+        numberTwo = "";
+        decimalOne = numberOne.includes(".") ? true : false;
+        decimalTwo = false;
+        let resultString = parseFloat(result.toFixed(9)).toString();
+        if (resultString.indexOf(".") >= 0) {
+          resultString = resultString.replace(/\.?0*$/, "");
+        }
+        displayScreen.textContent = resultString;
       }
+      operatorChoice = button.textContent;
+      displayScreen.textContent += " " + operatorChoice + " ";
     });
   });
 
