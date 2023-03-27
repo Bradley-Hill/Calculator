@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultCall = document.getElementById("result");
   const numberButtons = document.querySelectorAll(".number");
   const clearButton = document.getElementById("clearAll");
+  const operatorButtons = document.querySelectorAll(".operator");
 
   //Init variables for computation
   let numberOne = null;
@@ -47,6 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
         numberTwo += button.textContent;
         displayScreen.textContent += button.textContent;
       }
+    });
+  });
+
+  //Operator button event listener
+  operatorButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      operatorChoice = button.textContent;
+      displayScreen.textContent += operatorChoice;
     });
   });
 
