@@ -67,7 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
       parseFloat(numberTwo),
       operatorChoice
     );
-    displayScreen.textContent = result.toFixed(7);
+
+    let resultString = parseFloat(result.toFixed(9)).toString();
+    if (resultString.indexOf(".") >= 0) {
+      resultString = resultString.replace(/\.?0*$/, "");
+    }
+    displayScreen.textContent = resultString;
     numberOne = "";
     numberTwo = "";
     operatorChoice = null;
