@@ -8,61 +8,60 @@ document.addEventListener("DOMContentLoaded", function () {
   const operatorButtons = document.querySelectorAll(".operator");
 
   //Init variables for computation
-  let numberOne = null;
-  let numberTwo = null;
+  let numberOne = "";
+  let numberTwo = "";
   let operatorChoice = null;
   let decimalOne = false;
   let decimalTwo = false;
 
   numberButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-      if (
-        button.textContent === "." &&
-        ((operatorChoice == null && decimalOne) ||
-          (operatorChoice !== null && decimalTwo))
-      ) {
-        return;
-      }
-      if (numberOne === null) {
-        if (button.textContent === ".") {
-          decimalOne = true;
-        }
-        numberOne = button.textContent;
-        displayScreen.textContent += button.textContent;
-      } else if (operatorChoice === null) {
-        if (button.textContent === "." && decimalOne) {
+      if (button.textContent === ".") {
+        if (
+          (operatorChoice === null && decimalOne) ||
+          (operatorChoice !== null && decimalTwo)
+        ) {
           return;
         }
-        if (button.textContent === ".") {
+        if (operatorChoice === null) {
           decimalOne = true;
-        }
-        numberOne += button.textContent;
-        displayScreen.textContent += button.textContent;
-      } else {
-        if (button.textContent === "." && decimalTwo) {
-          return;
-        }
-        if (button.textContent === ".") {
+        } else {
           decimalTwo = true;
         }
-        numberTwo += button.textContent;
-        displayScreen.textContent += button.textContent;
+      } else {
+        if (operatorChoice === null) {
+          numberOne += button.textContent;
+          displayScreen.textContent += button.textContent;
+        } else {
+          numberTwo += button.textContent;
+          displayScreen.textContent += button.textContent;
+        }
       }
     });
   });
 
   //Result button event listener
   resultCall.addEventListener("click", function () {
-    if (numberOne !== null && numberTwo !== null && operatorChoice !== null) {
+    if (numberOne === "" || numberTwo === "" || operatorChoice === null) {
+      return;
+    }
+    if (decimalOne && numberOne === "") {
+      numberOne = "0";
+    }
+    if (decimalTwo && numberTwo === "") {
+      numberTwo = "0";
+    }
       const result = operate(
         parseFloat(numberOne),
         parseFloat(numberTwo),
         operatorChoice
       );
       displayScreen.textContent = result.toString();
-      numberOne = null;
-      numberTwo = null;
+      numberOne = "";
+      numberTwo = "";
       operatorChoice = null;
+      decimalOne = false;
+      decimalTwo = false;
     }
   });
 
