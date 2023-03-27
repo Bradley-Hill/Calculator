@@ -68,11 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
       operatorChoice
     );
 
-    let resultString = parseFloat(result.toFixed(9)).toString();
-    if (resultString.indexOf(".") >= 0) {
-      resultString = resultString.replace(/\.?0*$/, "");
+    if (isNaN(result)) {
+      displayScreen.textContent = "Nope, it can't be done.";
+    } else {
+      let resultString = parseFloat(result.toFixed(9)).toString();
+      if (resultString.indexOf(".") >= 0) {
+        resultString = resultString.replace(/\.?0*$/, "");
+      }
+      displayScreen.textContent = resultString;
     }
-    displayScreen.textContent = resultString;
     numberOne = "";
     numberTwo = "";
     operatorChoice = null;
@@ -126,5 +130,8 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  if (b === 0) {
+    return NaN;
+  }
   return Number(a) / Number(b);
 }
