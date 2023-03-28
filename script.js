@@ -125,37 +125,42 @@ document.addEventListener("DOMContentLoaded", function () {
   //Delete/Backspace button listener
   delButton.addEventListener("click", function () {
     let displayValue = displayScreen.textContent;
-    if(displayValue.length > 0){
-      displayValue = displayValue.slice(0, -1)
-      if(displayValue.length === 0){
+    if (displayValue.length > 0) {
+      displayValue = displayValue.slice(0, -1);
+      if (displayValue.length === 0) {
         numberOne = "";
         numberTwo = "";
         operatorChoice = null;
         decimalOne = false;
         decimalTwo = false;
       } else {
-        const lastCharacter = displayValue[displayValue.length - 1]
-        if(lastCharacter === "+" ||lastCharacter === "-" ||lastCharacter === "*" ||lastCharacter === "/" ||lastCharacter === "%" ||){
-          displayValue = displayValue.slice(0, -1)
-        
-        storedValue = displayValue
-        operatorChoice = lastCharacter
-        decimalTwo = false
-      } else {
-        const operatorIndex = displayValue.indexOf(operatorChoice)
-        if (operatorIndex === -1){
-          numberOne = displayValue
-          decimalOne = displayValue.includes(".") ? true : false
+        const lastCharacter = displayValue[displayValue.length - 1];
+        if (
+          lastCharacter === "+" ||
+          lastCharacter === "-" ||
+          lastCharacter === "*" ||
+          lastCharacter === "/" ||
+          lastCharacter === "%"
+        ) {
+          displayValue = displayValue.slice(0, -1);
+
+          storedValue = displayValue;
+          operatorChoice = lastCharacter;
+          decimalTwo = false;
         } else {
-          numberOne = displayValue.slice(0, operatorIndex).trim()
-          numberTwo = displayValue.slice(operatorIndex + 1).trim()
-          decimalOne = numberOne.includes(".") ? true:false
-          decimalTwo = numberTwo.includes(".") ? true:false
+          const operatorIndex = displayValue.indexOf(operatorChoice);
+          if (operatorIndex === -1) {
+            numberOne = displayValue;
+            decimalOne = displayValue.includes(".") ? true : false;
+          } else {
+            numberOne = displayValue.slice(0, operatorIndex).trim();
+            numberTwo = displayValue.slice(operatorIndex + 1).trim();
+            decimalOne = numberOne.includes(".") ? true : false;
+            decimalTwo = numberTwo.includes(".") ? true : false;
+          }
         }
       }
-
-      }
-      displayScreen.textContent = displayValue
+      displayScreen.textContent = displayValue;
     }
   });
 
