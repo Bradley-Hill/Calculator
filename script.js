@@ -143,6 +143,8 @@ function operate(num1, num2, operator) {
       return multiply(num1, num2);
     case "/":
       return divide(num1, num2);
+    case "%":
+      return percentage(num1, num2);
   }
 }
 
@@ -164,4 +166,7 @@ function divide(a, b) {
     return NaN;
   }
   return Number(a) / Number(b);
+}
+function percentage(a, b) {
+  return (Number(a) / Number(b)) * 100;
 }
