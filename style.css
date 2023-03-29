@@ -54,8 +54,8 @@ button {
 
 button:hover {
   background-color: #d2d2d2;
-  border-radius: 20px;
-  box-shadow: 2px;
+  border-radius: 60px;
+  box-shadow: 4px;
   transform: scale(1.1);
 }
 #result {
